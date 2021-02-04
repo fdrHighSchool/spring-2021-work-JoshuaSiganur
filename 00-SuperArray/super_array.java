@@ -33,6 +33,19 @@ public class superArray {
     this.array[ind] = value;
   }
 
+  public void remove (int index){
+    int[] temp = new int[this.array.length - 1];
+    for (int i = 0; i < temp.length; i++){
+      if (i >= index){
+        temp[i] = this.array[i + 1];
+      }
+      else{
+        temp[i] = this.array[i];
+      }
+    }
+    this.array = temp;
+  }
+
   public void grow(int b){ //this "grows" the array by making a temporary one then moving the results to the new and bigger one
     int[] tempArray = new int[this.array.length];
     for (int i = 0; i < this.array.length; i++){
@@ -47,5 +60,32 @@ public class superArray {
 
   public void set(int x, int value){ //this sets the value at a specific spot in the array
     this.array[x] = value;
+  }
+
+  public boolean isEmpty(){
+    for (int i = 0; i < this.array.length; i++){
+      if (array[i] != 0){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  public int getLength(){
+    return this.array.length;
+  }
+
+  public String toString(){
+    String str = "{";
+    for (int i = 0; i < this.array.length; i++){
+      if (i == this.array.length - 1){
+        str += this.array[i];
+      }
+      else{
+        str += this.array[i] + ", ";
+      }
+    }
+    str += " }";
+    return str;
   }
 }
